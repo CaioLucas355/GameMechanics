@@ -20,19 +20,21 @@ public class player : MonoBehaviour
         //Fliping player when it moves left-right
         if (horizontalInput > 0.01f)
         {
-          
+
             transform.localScale = Vector3.one;
         }
         else if (horizontalInput < -0.01f)
         {
-           
-           transform.localScale = new Vector3(-1, 1, 1);
+
+            transform.localScale = new Vector3(-1, 1, 1);
         }
 
-   
+
         // player walking
-        if (Input.GetKey(KeyCode.Space))
-            rb.velocity = new Vector2(rb.velocity.x, PlayerSpeed);
-        
+        if ()
+            if (Input.GetKey(KeyCode.Space)) 
+            { 
+                rb.velocity = new Vector2(rb.velocity.x, PlayerSpeed);
+            }
     }
-}
+} 
