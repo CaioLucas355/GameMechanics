@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class player : MonoBehaviour
 {
    [SerializeField]private float PlayerSpeed;
     private Rigidbody2D rb;
+    public bool isJumping;
+    
 
     private void Awake()
     {
@@ -18,6 +21,7 @@ public class player : MonoBehaviour
         rb.velocity = new Vector2(horizontalInput * PlayerSpeed, rb.velocity.y);
 
         //Fliping player when it moves left-right
+        
         if (horizontalInput > 0.01f)
         {
 
@@ -28,13 +32,31 @@ public class player : MonoBehaviour
 
             transform.localScale = new Vector3(-1, 1, 1);
         }
+        
+
 
 
         // player walking
-        if ()
-            if (Input.GetKey(KeyCode.Space)) 
+            if (Input.GetKey(KeyCode.Space) && isJumping == false) 
             { 
                 rb.velocity = new Vector2(rb.velocity.x, PlayerSpeed);
             }
     }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Floor"))
+        {
+            isJumping = false;
+        }
+    }
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Floor"))
+        {
+            isJumping = true;
+        }
+    }
+
+
+
 } 
