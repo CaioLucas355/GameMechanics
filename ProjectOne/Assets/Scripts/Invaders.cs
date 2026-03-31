@@ -41,10 +41,7 @@ public class Invaders : MonoBehaviour
             {
                 continue;
             }
-            if (direction == Vector2.right && invader.position.x >= )
-            {
-
-            }
+            
         }
     }
 
